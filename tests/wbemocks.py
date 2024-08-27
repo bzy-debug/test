@@ -470,8 +470,10 @@ class MockCanvas:
         else:
             cmd = "create_text: x={} y={} text={}".format(x, y, text)
         self._draw(cmd)
-        y2 = y + font.metrics("linespace")
-        if self._allow("create_text", y2): print(cmd)
+        print(cmd)
+        if font:
+            y2 = y + font.metrics("linespace")
+            if self._allow("create_text", y2): print(cmd)
 
     def pack(self, expand=None, fill=None):
         assert not self.pack_called, "Only call pack() once on each Canvas"

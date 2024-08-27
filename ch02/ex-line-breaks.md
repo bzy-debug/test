@@ -36,7 +36,7 @@ Let's mock a URL to load:
 
     >>> url = 'http://wbemocks.test/chapter2-example3'
     >>> wbemocks.socket.respond_200(url=url,
-    ...   body=("u\n" +
+    ...   response_body=("u\n" +
     ...         "d"))
 
 Create a browser instance and load the url.
@@ -53,7 +53,7 @@ Each additional newline moves the text down by twice `VSTEP`
 
     >>> url = 'http://wbemocks.test/chapter2-example4'
     >>> wbemocks.socket.respond_200(url=url,
-    ...   body=("u\n" +
+    ...   response_body=("u\n" +
     ...         "\n" +
     ...         "\n" +
     ...         "d"))
@@ -64,7 +64,7 @@ Each additional newline moves the text down by twice `VSTEP`
 Make sure that `cursor_x` is reset on a line break:
 
     >>> url = 'http://wbemocks.test/cursor-reset-test'
-    >>> wbemocks.socket.respond_200(url=url, body="eren\nmika")
+    >>> wbemocks.socket.respond_200(url=url, response_body="eren\nmika")
     >>> this_browser = browser.Browser()
     >>> this_browser.load(browser.URL(url))
     create_text: x=1 y=1 text=e
