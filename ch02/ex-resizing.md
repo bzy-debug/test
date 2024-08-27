@@ -32,7 +32,7 @@ Let's mock a URL to load:
 
     >>> url = 'http://wbemocks.test/chapter2-example6'
     >>> wbemocks.socket.respond_200(url=url,
-    ...   body="abcd")
+    ...   response_body="abcd")
 
 Loading that URL results in the text with each letter on a new y value.
 The `x` value is always one, but `y` increments, since the canvas is of width
@@ -49,7 +49,7 @@ Now we change what `url` points to to make sure we don't redownload
 the page when resizing:
 
     >>> wbemocks.socket.respond_200(url=url,
-    ...   body="efgh")
+    ...   response_body="efgh")
 
 Calling `resize` with a wider window should allow the text to be on one line.
 Now all the characters have the same `y`, but different `x` increments.
