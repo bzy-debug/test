@@ -59,7 +59,7 @@ faces.
     >>> wbemocks.tkinter.Canvas.require_image_size(16, 16)
     >>> url = 'http://wbemocks.test/chapter2-example6'
     >>> wbemocks.socket.respond_200(url=url,
-    ...   body="Hi \N{Grinning Face} and our \N{Grinning Face}")
+    ...   response_body="Hi \N{Grinning Face} and our \N{Grinning Face}")
 	>>> b = browser.Browser()
 	>>> url = browser.URL(url)
 
@@ -68,7 +68,7 @@ Let's see what it looks like:
     >>> b.load(url)
     create_text: x=1 y=1 text=H
     create_text: x=2 y=1 text=i
-    create_oval: x=2 y=2 image=PhotoImage('openmoji/1F600.png')
+    create_image: x=2 y=2 image=PhotoImage('openmoji/1F600.png')
     create_text: x=2 y=3 text=a
     create_text: x=1 y=4 text=n
     create_text: x=2 y=4 text=d
