@@ -56,7 +56,7 @@ class socket:
 
     def __enter__(self):
         return self
-    
+
     def __exit__(self, type_, value, traceback):
         # TODO: does not handle exit with exceptions differently
         self.close()
@@ -110,7 +110,7 @@ class socket:
         if not set(mode) <= {"r", "b"}:
             raise ValueError("invalid mode %r (only r, b allowed)" % (mode,))
         binary = "b" in mode  # 't' or 'b'
-            
+
 
         assert self.connected and self.host and self.port, \
             "You cannot call makefile() on a socket until you call connect()"
@@ -266,15 +266,15 @@ class SilentTk:
         global TK_INITIALIZED
         TK_INITIALIZED = True
         self.has_canvas = False
-        
+
     def bind(self, event, callback):
         pass
-    
+
     def create_canvas(self, *args, **kwargs):
         self.canvas_count += 1
         assert self.canvas_count <= 1, "Only one Canvas instance should be created per Tk object"
         return SilentCanvas(*args, **kwargs)
-    
+
 original_canvas_init = tkinter.Canvas.__init__
 def new_canvas_init(self, master=None, *args, **kwargs):
     if isinstance(master, SilentTk):
@@ -284,7 +284,7 @@ def new_canvas_init(self, master=None, *args, **kwargs):
 tkinter.Canvas.__init__ = new_canvas_init
 
 tkinter.Tk = SilentTk
-    
+
 class PhotoImage:
     DO_NOT_GC = weakref.WeakKeyDictionary()
 
@@ -470,7 +470,6 @@ class MockCanvas:
         else:
             cmd = "create_text: x={} y={} text={}".format(x, y, text)
         self._draw(cmd)
-        print(cmd)
         if font:
             y2 = y + font.metrics("linespace")
             if self._allow("create_text", y2): print(cmd)
